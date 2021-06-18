@@ -1,0 +1,12 @@
+.total-counts {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.total-counts li {
+  width: 29%;
+  height: 100px;
+  padding: 15px;
+  border: 1px solid rgb(206, 194, 194);
+  border-radius: 10px;
+}
