@@ -1,6 +1,13 @@
 <ul class="total-counts">
-  <li>Sites Conducting Vaccination</li>
-  <li>Total registrations</li>
-  <li>Total Vaccination Doses</li>
+  <li>Sites Conducting Vaccination
+    <p>Total -- {{DATA$.topBlock.sites.total}}</p>
+    <p>Govt -- {{DATA$.topBlock.sites.govt}}</p>
+  </li>
+  <li>Total registrations
+    <p>Total -- {{DATA$.topBlock.registration.total}}</p>
+    <p>Citizens between 18 and 45 -- {{DATA$.topBlock.registration.cit_18_45}}</p>
+  </li>
+  <li>Total Vaccination Doses
+    <p>Total -- {{DATA$.topBlock.vaccination.total}}</p>
+  </li>
 </ul>
-{{DATA$}}

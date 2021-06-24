@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidDetailsService } from '../covid-details.service';
+import { CovidDetails } from '../covid';
 @Component({
   selector: 'app-covid-dashboard',
   templateUrl: './covid-dashboard.component.html',
@@ -7,9 +8,11 @@ import { CovidDetailsService } from '../covid-details.service';
 })
 export class CovidDashboardComponent implements OnInit {
   constructor(private covidDetailsService: CovidDetailsService) {}
-  DATA$;
-  ngOnInit() {}
-  fetchData() {
-    this.DATA$ = this.covidDetailsService.getData();
+  DATA$: CovidDetails;
+  ngOnInit() {
+    this.fetchData();
+  }
+  fetchData(): void {
+    this.covidDetailsService.getData().subscribe(data => (this.DATA$ = data));
   }
 }
