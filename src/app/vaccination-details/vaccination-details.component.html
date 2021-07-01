@@ -1,5 +1,5 @@
 <a routerLink="">Go Back </a>
-<ul>
+<ul *ngIf="details">
   <li>Male : {{details.topBlock.vaccination.male}}</li>
   <li>Female : {{details.topBlock.vaccination.female}}</li>
   <li>Others : {{details.topBlock.vaccination.others}}</li>

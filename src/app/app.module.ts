@@ -7,13 +7,21 @@ import { AppComponent } from './app.component';
 import { CovidDashboardComponent } from './covid-dashboard/covid-dashboard.component';
 import { VaccinationDetailsComponent } from './vaccination-details/vaccination-details.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NgApexchartsModule
+  ],
   declarations: [
     AppComponent,
     CovidDashboardComponent,
-    VaccinationDetailsComponent
+    VaccinationDetailsComponent,
+    PieChartComponent
   ],
   bootstrap: [AppComponent]
 })

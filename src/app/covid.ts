@@ -40,6 +40,15 @@ export interface vaccinationDetails {
   today_aefi: number;
 }
 
+//for vaccination by age
+export interface VaccinationByAge {
+  total: number;
+  vac_18_45: number;
+  vac_45_60: number;
+  above_60: number;
+}
+
 export interface CovidDetails {
   topBlock: topBlockDetails;
+  vaccinationByAge: VaccinationByAge;
 }
