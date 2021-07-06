@@ -1,16 +1,18 @@
-<ul class="total-counts" *ngIf="DATA$">
+<ul class="total-counts" *ngIf="VaccinationDATA$">
   <li>Sites Conducting Vaccination
-    <p>Total -- {{DATA$.topBlock.sites.total | number}}</p>
-    <p>Govt -- {{DATA$.topBlock.sites.govt | number}}</p>
+    <p>Total -- {{VaccinationDATA$.topBlock.sites.total | number}}</p>
+    <p>Govt -- {{VaccinationDATA$.topBlock.sites.govt | number}}</p>
   </li>
   <li>Total registrations
-    <p>Total -- {{DATA$.topBlock.registration.total | number}}</p>
-    <p>Citizens between 18 and 45 -- {{DATA$.topBlock.registration.cit_18_45 | number}}</p>
+    <p>Total -- {{VaccinationDATA$.topBlock.registration.total | number}}</p>
+    <p>Citizens between 18 and 45 -- {{VaccinationDATA$.topBlock.registration.cit_18_45 | number}}</p>
   </li>
   <li>Total Vaccination Doses
-    <p>Total -- {{DATA$.topBlock.vaccination.total | number}}</p>
+    <p>Total -- {{VaccinationDATA$.topBlock.vaccination.total | number}}</p>
     <p><a routerLink="/vaccination/details">Click here for more details</a></p>
   </li>
 </ul>
 
-<app-pie-chart></app-pie-chart>
+<div *ngIf="chartData$">
+  <app-pie-chart [chartData]='chartData$'></app-pie-chart>
+</div>

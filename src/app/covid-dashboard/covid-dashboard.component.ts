@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidDetailsService } from '../covid-details.service';
-import { CovidDetails } from '../covid';
-import { PieChartComponent } from '../pie-chart/pie-chart.component';
+import { CovidDetails, VaccinationByAge } from '../covid';
+
 @Component({
   selector: 'app-covid-dashboard',
   templateUrl: './covid-dashboard.component.html',
@@ -9,12 +9,15 @@ import { PieChartComponent } from '../pie-chart/pie-chart.component';
 })
 export class CovidDashboardComponent implements OnInit {
   constructor(private covidDetailsService: CovidDetailsService) {}
-  DATA$: CovidDetails;
+  VaccinationDATA$: CovidDetails;
+  chartData$: VaccinationByAge;
   ngOnInit() {
     this.fetchData();
-    console.log(this.DATA$);
   }
   fetchData(): void {
-    this.covidDetailsService.getData().subscribe(data => (this.DATA$ = data));
+    this.covidDetailsService.getData().subscribe(data => {
+      this.VaccinationDATA$ = data;
+      this.chartData$ = this.VaccinationDATA$.vaccinationByAge;
+    });
   }
 }

@@ -8,7 +8,7 @@ import { CovidDashboardComponent } from './covid-dashboard/covid-dashboard.compo
 import { VaccinationDetailsComponent } from './vaccination-details/vaccination-details.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { PieChartComponent } from './pie-chart/pie-chart.component';
+import { StateWiseDetailsComponent } from './state-wise-details/state-wise-details.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,7 +21,7 @@ import { PieChartComponent } from './pie-chart/pie-chart.component';
     AppComponent,
     CovidDashboardComponent,
     VaccinationDetailsComponent,
-    PieChartComponent
+    StateWiseDetailsComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ChartComponent } from 'ng-apexcharts';
-import { CovidDetails, VaccinationByAge } from '../covid';
-import { CovidDetailsService } from '../covid-details.service';
+import { VaccinationByAge } from '../covid';
+
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
@@ -23,15 +23,14 @@ export class PieChartComponent implements OnInit {
   @ViewChild('chart') chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor(private covidDetailsService: CovidDetailsService) {
+  constructor() {
     this.chartOptions = {
-      series: [], //updating the series data in getChartData()
+      series: [], //updating the series data from Input decorator()
       chart: {
         width: 380,
-        type: 'pie'
+        type: 'donut'
       },
       labels: [
-        'Total',
         'Vaccination between 18-45',
         'Vaccination between 45-60',
         'Above 60'
@@ -52,21 +51,13 @@ export class PieChartComponent implements OnInit {
     };
   }
 
-  chartData: VaccinationByAge;
+  @Input() chartData?: VaccinationByAge;
   ngOnInit() {
-    this.getChartData();
-  }
-
-  getChartData(): void {
-    this.covidDetailsService.getData().subscribe(data => {
-      this.chartData = data.vaccinationByAge;
-      const data0 = [
-        this.chartData.total,
-        this.chartData.vac_18_45,
-        this.chartData.vac_45_60,
-        this.chartData.above_60
-      ];
-      this.chartOptions.series = data0;
-    });
+    const data0 = [
+      this.chartData.vac_18_45,
+      this.chartData.vac_45_60,
+      this.chartData.above_60
+    ];
+    this.chartOptions.series = data0;
   }
 }

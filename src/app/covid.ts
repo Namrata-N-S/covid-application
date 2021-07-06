@@ -48,7 +48,19 @@ export interface VaccinationByAge {
   above_60: number;
 }
 
+export interface GetBeneficiariesGroupBy {
+  state_id: string;
+  id: string;
+  title: string;
+  state_name: string;
+  total: number;
+  partial_vaccinated: number;
+  totally_vaccinated: number;
+  today: number;
+}
+
 export interface CovidDetails {
   topBlock: topBlockDetails;
   vaccinationByAge: VaccinationByAge;
+  getBeneficiariesGroupBy: GetBeneficiariesGroupBy;
 }
