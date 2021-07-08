@@ -1,3 +1,4 @@
+<h2>Vaccination Details of India</h2>
 <ul class="total-counts" *ngIf="VaccinationDATA$">
   <li>Sites Conducting Vaccination
     <p>Total -- {{VaccinationDATA$.topBlock.sites.total | number}}</p>
@@ -12,6 +13,8 @@
     <p><a routerLink="/vaccination/details">Click here for more details</a></p>
   </li>
 </ul>
+
+<app-state-wise-details></app-state-wise-details>
 
 <div *ngIf="chartData$">
   <app-pie-chart [chartData]='chartData$'></app-pie-chart>

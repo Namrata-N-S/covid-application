@@ -62,5 +62,5 @@ export interface GetBeneficiariesGroupBy {
 export interface CovidDetails {
   topBlock: topBlockDetails;
   vaccinationByAge: VaccinationByAge;
-  getBeneficiariesGroupBy: GetBeneficiariesGroupBy;
+  getBeneficiariesGroupBy: [GetBeneficiariesGroupBy];
 }

@@ -1,11 +1,22 @@
+
 .total-counts {
   display: flex;
   justify-content: space-between;
   list-style: none;
 }
 .total-counts li {
-  width: 29%;
+  width: 28%;
   padding: 15px;
   border: 1px solid rgb(206, 194, 194);
   border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .total-counts {
+    flex-direction: column;
+  }
+  .total-counts li {
+    width: 90%;
+    margin-bottom: 20px;
+  }
 }

@@ -1,3 +1,16 @@
-<p>
-state-wise-details works!
-</p>
+<h2>Statewise Vaccination Details</h2>
+<div *ngIf="statesInfo">
+  <select (change)="selectedState($event.target)" >
+  <option value="{{state.id}}" *ngFor="let state of statesInfo">{{state.title}}</option>
+</select>
+</div>
+
+
+<ul class="state-info" *ngIf="statesInfo">
+  <li>State Name : {{statesInfo[selectedStateId].state_name}}</li>
+  <li>State ID : {{statesInfo[selectedStateId].state_id}}</li>
+  <li>State Total : {{statesInfo[selectedStateId].total | number}}</li>
+  <li>Partially Vaccinated : {{statesInfo[selectedStateId].partial_vaccinated | number}}</li>
+  <li>Totally Vaccinated : {{statesInfo[selectedStateId].totally_vaccinated | number}}</li>
+  <li>Vaccinated Today : {{statesInfo[selectedStateId].today | number}}</li>
+</ul>
