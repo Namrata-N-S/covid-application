@@ -14,3 +14,9 @@
   <li>Totally Vaccinated : {{statesInfo[selectedStateId].totally_vaccinated | number}}</li>
   <li>Vaccinated Today : {{statesInfo[selectedStateId].today | number}}</li>
 </ul>
+
+<div *ngIf="districts">
+  <select>
+  <option *ngFor="let dist of districts.districts">{{dist.district_name}}</option>
+</select>
+</div>

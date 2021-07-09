@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidDetailsService } from '../covid-details.service';
+import { Districts } from '../districtDetails';
 import { GetBeneficiariesGroupBy } from '../covid';
 @Component({
   selector: 'app-state-wise-details',
@@ -11,6 +12,7 @@ export class StateWiseDetailsComponent implements OnInit {
 
   statesInfo: GetBeneficiariesGroupBy[];
   selectedStateId: number = 0;
+  districts: Districts;
   ngOnInit() {
     this.getState();
   }
@@ -23,5 +25,15 @@ export class StateWiseDetailsComponent implements OnInit {
 
   selectedState(state): void {
     this.selectedStateId = parseInt(state.value) - 1;
+    this.getDistrictDetails();
+  }
+
+  getDistrictDetails(): void {
+    this.covidDetailsService
+      .getDistricts(this.selectedStateId)
+      .subscribe(data => {
+        this.districts = data;
+        console.log(this.districts);
+      });
   }
 }
