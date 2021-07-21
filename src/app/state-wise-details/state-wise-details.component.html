@@ -1,22 +1,35 @@
 <h2>Statewise Vaccination Details</h2>
-<div *ngIf="statesInfo">
-  <select (change)="selectedState($event.target)" >
-  <option value="{{state.id}}" *ngFor="let state of statesInfo">{{state.title}}</option>
-</select>
-</div>
+<section class="state-wise-details">
+  <div *ngIf="statesInfo">
+    <h3>Select State</h3>
+    <select (change)="selectedState($event.target)">
+      <option value="{{state.id}}" *ngFor="let state of statesInfo"
+        >{{state.title}}</option
+      >
+    </select>
 
+    <ul class="state-info">
+      <li>State Name : {{statesInfo[selectedStateId].state_name}}</li>
+      <li>State ID : {{statesInfo[selectedStateId].state_id}}</li>
+      <li>State Total : {{statesInfo[selectedStateId].total | number}}</li>
+      <li>
+        Partially Vaccinated : {{statesInfo[selectedStateId].partial_vaccinated
+        | number}}
+      </li>
+      <li>
+        Totally Vaccinated : {{statesInfo[selectedStateId].totally_vaccinated |
+        number}}
+      </li>
+      <li>Vaccinated Today : {{statesInfo[selectedStateId].today | number}}</li>
+    </ul>
+  </div>
 
-<ul class="state-info" *ngIf="statesInfo">
-  <li>State Name : {{statesInfo[selectedStateId].state_name}}</li>
-  <li>State ID : {{statesInfo[selectedStateId].state_id}}</li>
-  <li>State Total : {{statesInfo[selectedStateId].total | number}}</li>
-  <li>Partially Vaccinated : {{statesInfo[selectedStateId].partial_vaccinated | number}}</li>
-  <li>Totally Vaccinated : {{statesInfo[selectedStateId].totally_vaccinated | number}}</li>
-  <li>Vaccinated Today : {{statesInfo[selectedStateId].today | number}}</li>
-</ul>
-
-<div *ngIf="districts">
-  <select>
-  <option *ngFor="let dist of districts.districts">{{dist.district_name}}</option>
-</select>
-</div>
+  <div *ngIf="districts">
+    <h3>Select District</h3>
+    <select>
+      <option *ngFor="let dist of districts.districts"
+        >{{dist.district_name}}</option
+      >
+    </select>
+  </div>
+</section>

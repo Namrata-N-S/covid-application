@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 import { CovidDetails } from './covid';
 import { Districts } from './districtDetails';
 @Injectable({
@@ -16,7 +17,12 @@ export class CovidDetailsService {
     'https://cdn-api.co-vin.in/api/v2/admin/location/districts/';
 
   getData(): Observable<CovidDetails> {
-    return this.http.get<CovidDetails>(this.vaccinationDataURL);
+    return this.http.get<CovidDetails>(this.vaccinationDataURL).pipe(
+      catchError(error => {
+        console.log('caught in catch error, returning 0');
+        return of(null);
+      })
+    );
   }
 
   getDistricts(queryString): Observable<Districts> {
