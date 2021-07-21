@@ -50,13 +50,17 @@ export interface VaccinationByAge {
 
 export interface GetBeneficiariesGroupBy {
   state_id: string;
+  state_name: string;
+  district_id: string;
+  district_name: string;
   id: string;
   title: string;
-  state_name: string;
   total: number;
   partial_vaccinated: number;
   totally_vaccinated: number;
   today: number;
+  session_site_id: string;
+  session_site_name: string;
 }
 
 export interface CovidDetails {

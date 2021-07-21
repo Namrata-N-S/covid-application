@@ -26,10 +26,17 @@
 
   <div *ngIf="districts">
     <h3>Select District</h3>
-    <select>
-      <option *ngFor="let dist of districts.districts"
-        >{{dist.district_name}}</option
-      >
+    <select (change)="displayDistData($event.target)">
+      <option value="{{dist.district_id}}" *ngFor="let dist of districts.districts"
+        >{{dist.district_name}}</option>
     </select>
   </div>
+
+  <div *ngIf="distInfo">
+    <ul class="district-info">
+      <li> {{distInfo.getBeneficiariesGroupBy}}</li>
+
+    </ul>
+  </div>
+
 </section>

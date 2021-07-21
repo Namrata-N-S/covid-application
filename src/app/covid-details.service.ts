@@ -29,4 +29,9 @@ export class CovidDetailsService {
     console.log(queryString);
     return this.http.get<Districts>(this.districtWiseData + (queryString + 1));
   }
+
+  getDistrictData(state, district): Observable<CovidDetails> {
+    const url = `${this.vaccinationDataURL}?state_id=${state}`;
+    return this.http.get<CovidDetails>(url);
+  }
 }
