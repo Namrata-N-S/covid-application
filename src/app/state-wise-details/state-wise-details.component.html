@@ -24,19 +24,22 @@
     </ul>
   </div>
 
-  <div *ngIf="districts">
+  <div *ngIf="distInfo" class="districts">
     <h3>Select District</h3>
     <select (change)="displayDistData($event.target)">
-      <option value="{{dist.district_id}}" *ngFor="let dist of districts.districts"
+      <option value="{{dist.district_id}}" *ngFor="let dist of distInfo"
         >{{dist.district_name}}</option>
     </select>
-  </div>
 
-  <div *ngIf="distInfo">
-    <ul class="district-info">
-      <li> {{distInfo.getBeneficiariesGroupBy}}</li>
-
-    </ul>
+    <div *ngFor="let dist1 of distInfo">
+      <ul *ngIf="dist1.district_id === selectedDistrict">
+        <li>District Name : {{dist1.district_name}}</li>
+        <li>District Id : {{dist1.district_id}}</li>
+        <li>Total : {{dist1.total | number}}</li>
+        <li>Partially Vaccinated : {{dist1.partial_vaccinated | number}}</li>
+        <li>Totally Vaccinated : {{dist1.totally_vaccinated | number}}</li>
+      </ul>
+    </div>
   </div>
 
 </section>

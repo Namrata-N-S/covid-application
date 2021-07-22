@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CovidDetailsService } from '../covid-details.service';
-import { Districts } from '../districtDetails';
-import { CovidDetails, GetBeneficiariesGroupBy } from '../covid';
+import { GetBeneficiariesGroupBy } from '../covid';
 @Component({
   selector: 'app-state-wise-details',
   templateUrl: './state-wise-details.component.html',
@@ -11,9 +10,9 @@ export class StateWiseDetailsComponent implements OnInit {
   constructor(private covidDetailsService: CovidDetailsService) {}
 
   statesInfo: GetBeneficiariesGroupBy[];
-  distInfo: CovidDetails;
+  distInfo: GetBeneficiariesGroupBy[];
   selectedStateId: number = 0;
-  districts: Districts;
+  selectedDistrict: string;
   ngOnInit() {
     this.getState();
   }
@@ -26,23 +25,16 @@ export class StateWiseDetailsComponent implements OnInit {
 
   selectedState(state): void {
     this.selectedStateId = parseInt(state.value) - 1;
-    this.getDistrictDetails();
+    this.getDistData(this.selectedStateId);
   }
 
-  getDistrictDetails(): void {
-    this.covidDetailsService
-      .getDistricts(this.selectedStateId)
-      .subscribe(data => {
-        this.districts = data;
-      });
+  getDistData(state): void {
+    this.covidDetailsService.getDistrictData(state + 1).subscribe(data => {
+      this.distInfo = data.getBeneficiariesGroupBy;
+    });
   }
 
-  displayDistData(district): void {
-    this.covidDetailsService
-      .getDistrictData(this.selectedStateId + 1, district.value)
-      .subscribe(data => {
-        this.distInfo = data;
-        console.log(this.distInfo);
-      });
+  displayDistData(selectedDistrict): void {
+    this.selectedDistrict = selectedDistrict.value;
   }
 }
