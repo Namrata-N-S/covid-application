@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VaccinationDetailsComponent } from '../vaccination-details/vaccination-details.component';
 import { CovidDashboardComponent } from '../covid-dashboard/covid-dashboard.component';
+import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
 const routes: Routes = [
   {
     path: '',
@@ -10,6 +11,10 @@ const routes: Routes = [
   {
     path: 'vaccination/details',
     component: VaccinationDetailsComponent
+  },
+  {
+    path: 'feedback',
+    component: FeedbackFormComponent
   }
 ];
 

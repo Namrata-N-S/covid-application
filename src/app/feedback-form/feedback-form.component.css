@@ -1,0 +1,8 @@
+.form-item label {
+  width: 120px;
+  display: block;
+}
+
+.form-item input {
+  margin-bottom: 20px;
+}

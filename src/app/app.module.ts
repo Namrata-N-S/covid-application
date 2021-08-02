@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { StateWiseDetailsComponent } from './state-wise-details/state-wise-details.component';
+import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { StateWiseDetailsComponent } from './state-wise-details/state-wise-detai
     CovidDashboardComponent,
     VaccinationDetailsComponent,
     PieChartComponent,
-    StateWiseDetailsComponent
+    StateWiseDetailsComponent,
+    FeedbackFormComponent
   ],
   bootstrap: [AppComponent]
 })
