@@ -31,7 +31,6 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
     this.submitted = true;
   }
   rating(e) {
-    console.log(e.target.name);
     this.checkboxRef.toArray().map((element, index, array) => {
       if (index <= e.target.value - 1) {
         return (element.nativeElement.checked = true);
