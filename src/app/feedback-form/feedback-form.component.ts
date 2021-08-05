@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  ViewChildren,
+  QueryList
+} from '@angular/core';
 import { Feedback } from '../feedback';
 
 @Component({
@@ -6,19 +14,30 @@ import { Feedback } from '../feedback';
   templateUrl: './feedback-form.component.html',
   styleUrls: ['./feedback-form.component.css']
 })
-export class FeedbackFormComponent implements OnInit {
+export class FeedbackFormComponent implements OnInit, AfterViewInit {
+  @ViewChildren('checboxRef') checkboxRef: QueryList<ElementRef>;
+  ngAfterViewInit() {}
   constructor() {}
 
   model = new Feedback('', '', '', '', '');
-
+  tobeChecked = [false, false, false, false, false];
+  userRating = [false, false, false, false, false];
   ngOnInit() {
     this.onSubmit();
-    print();
   }
 
   submitted = false;
   onSubmit() {
     this.submitted = true;
-    alert('hi');
+  }
+  rating(e) {
+    console.log(e.target.name);
+    this.checkboxRef.toArray().map((element, index, array) => {
+      if (index <= e.target.value - 1) {
+        return (element.nativeElement.checked = true);
+      } else {
+        return (element.nativeElement.checked = false);
+      }
+    });
   }
 }

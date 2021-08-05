@@ -3,6 +3,10 @@
   display: block;
 }
 
-.form-item input {
+.form-item {
   margin-bottom: 20px;
+}
+
+.alert-danger {
+  color: red;
 }
