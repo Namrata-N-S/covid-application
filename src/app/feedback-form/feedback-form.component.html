@@ -26,13 +26,23 @@
     </div>
   </div>
 
-  <div class="form-item">
-    <label for="rating">How do you like our app: </label>
+  <div class="form-item rating">
+    <p>How do you like our app: </p>
+    <label for="one-star">
     <input type="checkbox" id="one-star" value="1" name="one-star"  (change)="rating($event)" #checboxRef/>
+    </label>
+    <label for="two-star">
     <input type="checkbox" id="two-star" value="2" name="two-star"   (change)="rating($event)" #checboxRef/>
+    </label>
+    <label for="three-star">
     <input type="checkbox" id="three-star" value="3" name="three-star" (change)="rating($event)" #checboxRef/>
+    </label>
+    <label for="four-star">
     <input type="checkbox" id="four-star" value="4" name="four-star" (change)="rating($event)" #checboxRef/>
+    </label>
+    <label for="five-star">
     <input type="checkbox" id="five-star" value="5" name="five-star" (change)="rating($event)" #checboxRef/>
+    </label>
   </div>
 
   <div class="form-item">
@@ -42,3 +52,5 @@
 
   <button type="submit" >Submit</button>
 </form>
+
+<img src="../../assets/images/Filled-star.png" alt="star"/>
