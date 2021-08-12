@@ -1,8 +1,4 @@
-.main-container {
-  width: 90%;
-  max-width: 1440px;
-  margin: auto;
-}
+
 .total-counts {
   display: flex;
   justify-content: space-between;

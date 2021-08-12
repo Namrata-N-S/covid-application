@@ -16,6 +16,26 @@
   width: auto;
 }
 
-.rating p {
-  background: url('src/assets/images/empty-star.png');
+.rating label {
+  background: url('https://raw.githubusercontent.com/Namrata-N-S/covid-application/version-1/src/assets/images/Filled-star.png');
+}
+
+.rating input[type='checkbox'] {
+  display: none;
+}
+
+.rating label {
+  content: '';
+  background: url('https://raw.githubusercontent.com/Namrata-N-S/covid-application/version-1/src/assets/images/empty-star.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  color: transparent;
+}
+input[type='checkbox']:checked + label {
+  background: url('https://raw.githubusercontent.com/Namrata-N-S/covid-application/version-1/src/assets/images/Filled-star.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

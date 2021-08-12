@@ -3,7 +3,7 @@ export class Feedback {
     public name: string,
     public email: string,
     public phone_no: string,
-    public rating: string,
+    public rating: number,
     public reason: string
   ) {}
 }

@@ -1,57 +1,66 @@
-<h1>Please fill out the Feedback Form</h1>
-<form #feedbackForm="ngForm" (ngSubmit)="onSubmit()">
-  <div class="form-item">
-    <label form="name">Name: </label>
-    <input type="text" id="name" name="name" [(ngModel)]="model.name" required #name="ngModel" pattern="[A-Za-z]{5}" minlength="0"/>
-    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-      <div *ngIf="name.errors?.required" class="alert alert-danger">Name is required</div>
-      <div *ngIf="name.errors?.pattern">Name should be of 5 chars long and cannot contain any special chars or numbers
+<section class="main-container">
+  <a routerLink="/">Go Back</a>
+  <h1>Please fill out the Feedback Form</h1>
+  <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)">
+    <div class="form-item">
+      <label form="name">Name: </label>
+      <input type="text" id="name" name="name" [(ngModel)]="model.name" required #name="ngModel" pattern="[A-Za-z]{5}" minlength="0"/>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors?.required" class="alert alert-danger">Name is required</div>
+        <div *ngIf="name.errors?.pattern">Name should be of 5 chars long and cannot contain any special chars or numbers
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-item">
-    <label for="email">Email: </label>
-    <input type="email" id="email" name="email" [(ngModel)]="model.email" required #email="ngModel" email />
-    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-      <div *ngIf="email.errors?.required">Email is required</div>
-      <div *ngIf="email.errors?.email">Email should be of the form name@name.com</div>
+    <div class="form-item">
+      <label for="email">Email: </label>
+      <input type="email" id="email" name="email" [(ngModel)]="model.email" required #email="ngModel" email />
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors?.required">Email is required</div>
+        <div *ngIf="email.errors?.email">Email should be of the form name@name.com</div>
+      </div>
     </div>
-  </div>
-  <div class="form-item">
-    <label for="phone-no">Phone Number: </label>
-    <input type="tel" id="phone-no" name="phone-no" [(ngModel)]="model.phone_no" required maxlength="10" pattern="[0-9]{10}" #phone = "ngModel"/>
-    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
-      <div *ngIf="phone.errors?.required">Phone number is required</div>
-      <div *ngIf="phone.errors?.pattern">Phone number should have 10 digits</div>
+    <div class="form-item">
+      <label for="phone-no">Phone Number: </label>
+      <input type="tel" id="phone-no" name="phone-no" [(ngModel)]="model.phone_no" required maxlength="10" pattern="[0-9]{10}" #phone = "ngModel"/>
+      <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger">
+        <div *ngIf="phone.errors?.required">Phone number is required</div>
+        <div *ngIf="phone.errors?.pattern">Phone number should have 10 digits</div>
+      </div>
     </div>
+
+    <div class="form-item rating">
+      <p>How do you like our app: </p>
+
+      <input type="hidden" value="" name="rating" [(ngModel)]="model.rating"/>
+      <input type="checkbox" id="one-star" value="1" name="star"  (change)="rating($event)" #checboxRef />
+      <label for="one-star">1</label>
+
+      <input type="checkbox" id="two-star" value="2" name="star"   (change)="rating($event)" #checboxRef />
+      <label for="two-star">2</label>
+
+      <input type="checkbox" id="three-star" value="3" name="star" (change)="rating($event)" #checboxRef/>
+      <label for="three-star">3</label>
+
+      <input type="checkbox" id="four-star" value="4" name="star" (change)="rating($event)" #checboxRef />
+      <label for="four-star">4</label>
+
+      <input type="checkbox" id="five-star" value="5" name="star" (change)="rating($event)" #checboxRef />
+      <label for="five-star">5</label>
+    </div>
+
+    <div class="form-item">
+      <label for="Reason">Reason: </label>
+      <textarea id="reason" name="reason" [(ngModel)]="model.reason" required></textarea>
+    </div>
+
+    <button type="submit" [disabled]="!feedbackForm.form.valid">Submit</button>
+  </form>
+
+  <div class="details" *ngIf="submitted">
+    <p>{{model.name}}</p>
+    <p>{{model.email}}</p>
+    <p>{{model.phone_no}}</p>
+    <p>{{model.rating}}</p>
+    <p>{{model.reason}}</p>
   </div>
-
-  <div class="form-item rating">
-    <p>How do you like our app: </p>
-    <label for="one-star">
-    <input type="checkbox" id="one-star" value="1" name="one-star"  (change)="rating($event)" #checboxRef/>
-    </label>
-    <label for="two-star">
-    <input type="checkbox" id="two-star" value="2" name="two-star"   (change)="rating($event)" #checboxRef/>
-    </label>
-    <label for="three-star">
-    <input type="checkbox" id="three-star" value="3" name="three-star" (change)="rating($event)" #checboxRef/>
-    </label>
-    <label for="four-star">
-    <input type="checkbox" id="four-star" value="4" name="four-star" (change)="rating($event)" #checboxRef/>
-    </label>
-    <label for="five-star">
-    <input type="checkbox" id="five-star" value="5" name="five-star" (change)="rating($event)" #checboxRef/>
-    </label>
-  </div>
-
-  <div class="form-item">
-    <label for="Reason">Reason: </label>
-    <textarea id="reason" name="reason" [(ngModel)]="model.reason" required></textarea>
-  </div>
-
-  <button type="submit" >Submit</button>
-</form>
-
-<img src="https://i.pinimg.com/originals/a5/13/a0/a513a04aa1f6a6ff689d2d71038d682a.jpg"
- alt="star"/>
+</section>

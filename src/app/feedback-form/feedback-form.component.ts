@@ -19,20 +19,19 @@ export class FeedbackFormComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {}
   constructor() {}
 
-  model = new Feedback('', '', '', '', '');
-  tobeChecked = [false, false, false, false, false];
-  userRating = [false, false, false, false, false];
-  ngOnInit() {
-    this.onSubmit();
-  }
+  model = new Feedback('', '', '', 5, '');
+
+  ngOnInit() {}
 
   submitted = false;
-  onSubmit() {
+  onSubmit(form) {
     this.submitted = true;
+    console.log(form.value);
   }
   rating(e) {
     this.checkboxRef.toArray().map((element, index, array) => {
       if (index <= e.target.value - 1) {
+        this.model.rating = index + 1;
         return (element.nativeElement.checked = true);
       } else {
         return (element.nativeElement.checked = false);
