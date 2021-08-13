@@ -1,5 +1,5 @@
-<section class="main-container">
-  <a routerLink="/">Go Back</a>
+<a routerLink="/" class="main-container">Go Back</a>
+<section class="main-container" *ngIf="!submitted">
   <h1>Please fill out the Feedback Form</h1>
   <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)">
     <div class="form-item">
@@ -56,11 +56,13 @@
     <button type="submit" [disabled]="!feedbackForm.form.valid">Submit</button>
   </form>
 
-  <div class="details" *ngIf="submitted">
-    <p>{{model.name}}</p>
-    <p>{{model.email}}</p>
-    <p>{{model.phone_no}}</p>
-    <p>{{model.rating}}</p>
-    <p>{{model.reason}}</p>
-  </div>
+</section>
+
+<section class="details main-container" *ngIf="submitted">
+  <h2>Your details are as follows:</h2>
+  <p>Name : {{model.name}}</p>
+  <p>Email : {{model.email}}</p>
+  <p>Phone Number : {{model.phone_no}}</p>
+  <p>Rating : {{model.rating}}</p>
+  <p>Reason : {{model.reason}}</p>
 </section>
