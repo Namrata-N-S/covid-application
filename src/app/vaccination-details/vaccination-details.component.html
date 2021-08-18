@@ -1,14 +1,14 @@
 <a routerLink="">Go Back </a>
 <ul *ngIf="details">
-  <li>Male : {{details.topBlock.vaccination.male}}</li>
-  <li>Female : {{details.topBlock.vaccination.female}}</li>
-  <li>Others : {{details.topBlock.vaccination.others}}</li>
-  <li>covishield : {{details.topBlock.vaccination.covishield}}</li>
-  <li>covaxin : {{details.topBlock.vaccination.covaxin}}</li>
-  <li>sputnik : {{details.topBlock.vaccination.sputnik}}</li>
-  <li>today : {{details.topBlock.vaccination.today}}</li>
-  <li>Total 1st Doses : {{details.topBlock.vaccination.tot_dose_1}}</li>
-  <li>Total 2nd Doses : {{details.topBlock.vaccination.tot_dose_2}}</li>
-  <li>total_doses : {{details.topBlock.vaccination.total_doses}}</li>
+  <li>Male : {{details.topBlock.vaccination.male | number}}</li>
+  <li>Female : {{details.topBlock.vaccination.female | number}}</li>
+  <li>Others : {{details.topBlock.vaccination.others | number}}</li>
+  <li>covishield : {{details.topBlock.vaccination.covishield | number}}</li>
+  <li>covaxin : {{details.topBlock.vaccination.covaxin | number}}</li>
+  <li>sputnik : {{details.topBlock.vaccination.sputnik | number}}</li>
+  <li>today : {{details.topBlock.vaccination.today | number}}</li>
+  <li>Total 1st Doses : {{details.topBlock.vaccination.tot_dose_1 | number}}</li>
+  <li>Total 2nd Doses : {{details.topBlock.vaccination.tot_dose_2| number}}</li>
+  <li>total_doses : {{details.topBlock.vaccination.total_doses | number}}</li>
 
 </ul>
