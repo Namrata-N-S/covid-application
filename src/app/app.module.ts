@@ -11,6 +11,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { PieChartComponent } from './pie-chart/pie-chart.component';
 import { StateWiseDetailsComponent } from './state-wise-details/state-wise-details.component';
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
+import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
     StateWiseDetailsComponent,
     FeedbackFormComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthGuard, AdminGuard]
 })
 export class AppModule {}

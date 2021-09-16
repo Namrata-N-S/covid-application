@@ -3,14 +3,34 @@ import { RouterModule, Routes } from '@angular/router';
 import { VaccinationDetailsComponent } from '../vaccination-details/vaccination-details.component';
 import { CovidDashboardComponent } from '../covid-dashboard/covid-dashboard.component';
 import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
+import { AuthGuard } from './../auth.guard';
+import { AdminGuard } from './../admin.guard';
 const routes: Routes = [
   {
     path: '',
-    component: CovidDashboardComponent
+    redirectTo: '/vaccination',
+    pathMatch: 'full'
   },
   {
-    path: 'vaccination/details',
-    component: VaccinationDetailsComponent
+    path: 'vaccination',
+    canActivate: [AuthGuard],
+
+    children: [
+      {
+        path: '',
+        component: CovidDashboardComponent
+      },
+      {
+        path: '',
+        canActivateChild: [AdminGuard],
+        children: [
+          {
+            path: 'details',
+            component: VaccinationDetailsComponent
+          }
+        ]
+      }
+    ]
   },
   {
     path: 'feedback',
