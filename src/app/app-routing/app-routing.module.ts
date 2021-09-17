@@ -5,6 +5,7 @@ import { CovidDashboardComponent } from '../covid-dashboard/covid-dashboard.comp
 import { FeedbackFormComponent } from '../feedback-form/feedback-form.component';
 import { AuthGuard } from './../auth.guard';
 import { AdminGuard } from './../admin.guard';
+import { LazyGuard } from '../lazy.guard';
 
 const routes: Routes = [
   {
@@ -38,7 +39,8 @@ const routes: Routes = [
     component: FeedbackFormComponent
   },
   {
-    path: 'lazyLoading',
+    path: 'lazy',
+    canLoad: [LazyGuard],
     loadChildren: () =>
       import('./../lazy-loading/lazy-loading.module').then(
         m => m.LazyLoadingModule

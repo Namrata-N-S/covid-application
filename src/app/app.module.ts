@@ -13,6 +13,7 @@ import { StateWiseDetailsComponent } from './state-wise-details/state-wise-detai
 import { FeedbackFormComponent } from './feedback-form/feedback-form.component';
 import { AuthGuard } from './auth.guard';
 import { AdminGuard } from './admin.guard';
+import { LazyGuard } from './lazy.guard';
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,6 +31,6 @@ import { AdminGuard } from './admin.guard';
     FeedbackFormComponent
   ],
   bootstrap: [AppComponent],
-  providers: [AuthGuard, AdminGuard]
+  providers: [AuthGuard, AdminGuard, LazyGuard]
 })
 export class AppModule {}
